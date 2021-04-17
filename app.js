@@ -44,6 +44,13 @@ const toons = [
         skill: "Fishing",
         combatLevel: 120,
         
+    },
+    {
+        routeName: 'socrempres',
+        name: "socrempres",
+        role: "mage",
+        skill: "magic",
+        combatLevel: 99
     }
 ];
 
