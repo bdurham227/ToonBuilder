@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 7000;
+let PORT = process.env.PORT || 7000;
 
 //set up middleware functions both are body parsers
 //express.urlencoded() is middleare that parses incoming request with urlencoded payloads 
