@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Old School Runescape</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Old School Runescape</h1>
+      <h3>The greatest resource in Gilenor</h3>
+      <hr>
+      <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Add New Character</button></a>
+    </div>
+    <div class="row">
+
+      <div class="col-12">
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h3><strong>Character Search</strong></h3>
+          </div>
+          <div class="card-body">
+            <input type="text" id="character-search" class="form-control">
+            <br>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span class="fa fa-search"></span>
+                Search
+                Your Feelings. You know it to be true.</button>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="card-header">
+            <h3><strong>Character Statistics</strong></h3>
+          </div>
+          <div class="card-body">
+            <h2 id="name">Runite</h2>
+            <div id="stats" style="display: none;">
+              <h3><strong>Role</strong> <span id="role">Miner</span></h3>
+              <h3><strong>Combat Level:</strong> <span id="combatLevel">126</span></h3>
+              <h3><strong>Skill</strong> <span id="skill">Mining</span></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+      const searchBtn = document.getElementById('search-btn');
+      const statsEl = document.getElementById('stats');
+      const nameEl = document.getElementById('name');
+      const classEl = document.getElementById('role');
+      const cbEl = document.getElementById('combatLevel');
+      const skillEl = document.getElementById('skill');
+
+      // What is this code doing?
+      searchBtn.addEventListener('click', () => {
+        let searchedCharacter = document
+          .getElementById('character-search')
+          .value.trim();
+
+          // Using a RegEx Pattern to remove spaces from searchedCharacter
+          // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+        searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
+
+          // QUESTION: What does the fetch method do, and what parameters is it expecting
+        fetch(`/characters/${searchedCharacter}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            const { name, role, skill, combatLevel } = data;
+
+            if (data) {
+              statsEl.setAttribute('style', 'display: inline');
+              nameEl.textContent = name;
+              classEl.textContent = role;
+              cbEl.textContent = combatLevel;
+              skillEl.textContent = skill;
+            } else {
+              nameEl.textContent =
+                'The force is not strong with this one. Your character was not found.';
+              statsEl.setAttribute('style', 'display: none');
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      });
+
+  </script>
+
+</body>
+
+</html>
