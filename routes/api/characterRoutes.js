@@ -1,13 +1,14 @@
-const router = require('express').Router();
-const { getAllCharacters, getCharacter, createCharacter, deleteCharacter } = require('../../controllers/characterController');
+const router = require("express").Router();
+const {
+  getAllCharacters,
+  getCharacter,
+  createCharacter,
+  deleteCharacter,
+} = require("../../controllers/characterController");
 
-router
-.get('/', getAllCharacters)
-.post('/', createCharacter)
+router.get("/", getAllCharacters).post("/", createCharacter);
 
-router
-.get('/:id', getCharacter)
-.delete('/:id', deleteCharacter)
+router.get("/:id", getCharacter).delete("/:id", deleteCharacter);
 
 //get all characters
 // router.get('/', async (req, res) => {
@@ -39,8 +40,6 @@ router
 // get('/:id', getCharacter)
 // .delete('/:id', deleteCharacter)
 
-
-
 //get all characters
 // router.get('/', async (req, res) => {
 //     try {
@@ -58,11 +57,6 @@ router
 //         res.status(500).json(err)
 //     }
 // })
-
-
-
-
-
 
 // //get one character
 // router.get('/:id', async (req, res) => {
@@ -93,7 +87,6 @@ router
 //     }
 // })
 
-
 // //create a character
 // router.post('/', (req, res) => {
 //     try {
@@ -111,7 +104,6 @@ router
 //         res.status(200).json(character);
 //     })
 
-
 //     } catch (err) {
 //         res.status(500).json(err)
 //     }
@@ -125,9 +117,6 @@ router
 // //                 id: req.params.id,
 // //             },
 // //         });
-       
-
-
 
 // //         res.status(200).json(characterData);
 // //     } catch (err) {
@@ -145,7 +134,7 @@ router
 //         });
 //         if(!characterData) {
 //           res.status(404).json({ message: `No Character with the ID ${req.params.id} found!` });
-//           return;  
+//           return;
 //         }
 //         res.status(204).json(characterData);
 

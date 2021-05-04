@@ -1,21 +1,15 @@
-const router = require('express').Router();
+const router = require("express").Router();
 // const { Account, Character } = require('../../models');
-const { getAllAccounts, getAccount, createAccount, deleteAccount } = require('../../controllers/accountController')
+const {
+  getAllAccounts,
+  getAccount,
+  createAccount,
+  deleteAccount,
+} = require("../../controllers/accountController");
 
+router.get("/", getAllAccounts).post("/", createAccount);
 
-router
-.get('/', (getAllAccounts))
-.post('/', createAccount)
-
-router
-.get('/:id', getAccount)
-.delete('/:id', deleteAccount)
-
-
-
-
-
-
+router.get("/:id", getAccount).delete("/:id", deleteAccount);
 
 // router.get('/', async (req, res) => {
 //     try {
@@ -58,7 +52,6 @@ router
 //         res.status(500).json(err);
 //     }
 // })
-
 
 // //create an account
 // router.post('/', async (req, res) => {

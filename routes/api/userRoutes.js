@@ -1,36 +1,16 @@
-const router = require('express').Router();
+const router = require("express").Router();
 // const userController = require('../../controllers/userController')
-const { getAllUsers, getUser, createUser, updateUser, deleteUser } = require('../../controllers/userController')
+const {
+  getAllUsers,
+  getUser,
+  createUser,
+  updateUser,
+  deleteUser,
+} = require("../../controllers/userController");
 
+router.get("/", getAllUsers).post("/", createUser);
 
-//get all users
-
-// router
-// .route('/')
-// .get(userController.getAllUsers)
-// .post(userController.createUser)
-
-
-// router
-// .route('/:id')
-// .get(userController.getUser)
-// .put(userController.updateUser)
-// .delete(userController.deleteUser)
-
-
-router
-.get('/', getAllUsers)
-.post('/', createUser)
-
-router
-.get('/:id', getUser)
-.put('/:id', updateUser)
-.delete('/:id', deleteUser)
-
-
-
-
-
+router.get("/:id", getUser).put("/:id", updateUser).delete("/:id", deleteUser);
 
 // const getAllUsers = async (req, res) => {
 //     try {
@@ -103,8 +83,6 @@ router
 //     }
 // }
 
-
-
 // const deleteUser =  async (req, res) => {
 //     try {
 //         const userData = await User.destroy({
@@ -118,18 +96,10 @@ router
 //         }
 //         res.status(204).json(userData);
 
-
-
 //     } catch (err) {
 //         res.status(500).json(err);
 //     }
 // }
-
-
-
-
-
-
 
 // router.get('/', async (req, res) => {
 //     try {
@@ -172,7 +142,6 @@ router
 //         res.status(500).json(err);
 //     }
 // })
-
 
 //create a user
 // router.post('/', async (req, res) => {
@@ -219,8 +188,6 @@ router
 //             return;
 //         }
 //         res.status(204).json(userData);
-
-
 
 //     } catch (err) {
 //         res.status(500).json(err);

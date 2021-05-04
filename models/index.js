@@ -1,45 +1,42 @@
-//import Models 
-const Account = require('./Account');
-const User = require('./User');
-const Character = require('./Character');
+//import Models
+const Account = require("./Account");
+const User = require("./User");
+const Character = require("./Character");
 
 //set up assocations
 
-User.hasMany(Account,{
-    onDelete: 'cascade',
+User.hasMany(Account, {
+  onDelete: "cascade",
 });
-Account.belongsTo(User,{
-    onDelete: 'cascade',
-})
-
-Character.belongsTo(Account,{
-    foreignKey: 'account_id',
-    onDelete: 'cascade',
+Account.belongsTo(User, {
+  onDelete: "cascade",
 });
 
-Account.hasMany(Character,{
-    foreignKey: 'account_id',
-    onDelete: 'cascade',
+Character.belongsTo(Account, {
+  foreignKey: "account_id",
+  onDelete: "cascade",
+});
+
+Account.hasMany(Character, {
+  foreignKey: "account_id",
+  onDelete: "cascade",
 });
 
 User.belongsToMany(Account, {
-    through: {
-        model: Character,
-    },
-    foreignKey: 'user_id',
-    onDelete: 'cascade',
+  through: {
+    model: Character,
+  },
+  foreignKey: "user_id",
+  onDelete: "cascade",
 });
 
 Account.belongsToMany(User, {
-    through: {
-        model: Character,
-    },
-    foreignKey: 'account_id',
-    onDelete: 'cascade',
+  through: {
+    model: Character,
+  },
+  foreignKey: "account_id",
+  onDelete: "cascade",
 });
-
-
-
 
 // Character.belongsToMany(User, {
 //     through: {
@@ -67,7 +64,6 @@ Account.belongsToMany(User, {
 //     onDelete: 'cascade',
 // });
 
-
 //  User.hasMany(Account,{
 //      unique: false,
 //      onDelete: 'cascade',
@@ -87,28 +83,6 @@ Account.belongsToMany(User, {
 //      foreignKey: 'user_id',
 //  });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Character.belongsTo(Account, {
 //     unqiue: false,
 //     onDelete: 'cascade',
@@ -124,7 +98,7 @@ Account.belongsToMany(User, {
 //     },
 //     foreignKey: 'user_id',
 //     onDelete: 'cascade',
-    
+
 // });
 
 // User.belongsToMany(Account, {
@@ -133,13 +107,11 @@ Account.belongsToMany(User, {
 //     },
 //     foreignKey: 'account_id',
 //     onDelete: 'casacde',
-    
+
 // });
 
-
-
 module.exports = {
-    Account,
-    User,
-    Character,
+  Account,
+  User,
+  Character,
 };
