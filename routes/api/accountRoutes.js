@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Account, User, Character } = require('../../models');
+const { Account, Character } = require('../../models');
 
 //get all accounts
 router.get('/', async (req, res) => {
@@ -35,7 +35,7 @@ router.get('/:id', async (req, res) => {
         ],
     });
     if (!accountData) {
-        res.status(404).json({ message: `No User with the Id ${req.params.id} found!` });
+        res.status(404).json({ message: `No Account with the Id ${req.params.id} found!` });
         return;
     }
     res.status(200).json(accountData);
@@ -75,7 +75,7 @@ router.delete('/:id', async (req, res) => {
             },
         });
         if(!accountData) {
-            res.status(404).json({ message: `No User with the Id ${req.params.id} found!` });
+            res.status(404).json({ message: `No Account with the Id ${req.params.id} found!` });
             return;
         }
         res.status(200).json(accountData);
@@ -83,3 +83,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 })
+
+module.exports = router;

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Account, Character } = require('../../models');
+const { User, Account } = require('../../models');
 
 //get all users
 router.get('/', async (req, res) => {
@@ -95,3 +95,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 })
+
+module.exports = router;
