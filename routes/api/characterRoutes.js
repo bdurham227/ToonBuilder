@@ -76,7 +76,27 @@ router.get('/:id', async (req, res) => {
 
 
 //create a character
-/
+router.post('/', (req, res) => {
+    try {
+    Character.create(req.body)
+    .then((character) => {
+        console.log(character);
+        if (req.body.account_id.length) {
+            const characterAccountId = req.body.account_id.map((account_id) => {
+                return {
+                    account_id,
+                };
+            });
+            return Character.bulkCreate(characterAccountId);
+        }
+        res.status(200).json(character);
+    })
+
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
 //update a character
 // router.put('/:id', async (req, res) => {
