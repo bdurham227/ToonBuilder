@@ -1,6 +1,6 @@
-const { Account, Character } = require('../../models');
+const { Account, Character } = require('../models');
 
-const getAllAccounts =  async (req, res) => {
+ exports.getAllAccounts =  async (req, res) => {
     try {
         const accountData = await Account.findAll({
             attributes: ['id', 'account_name', 'user_id'],
@@ -18,7 +18,7 @@ const getAllAccounts =  async (req, res) => {
 }
 
 
-const getAccount = async (req, res) => {
+exports.getAccount = async (req, res) => {
     try {
     const accountData = await Account.findOne({
         where: {
@@ -43,7 +43,7 @@ const getAccount = async (req, res) => {
 }
 
 
-const createAccount = async (req, res) => {
+exports.createAccount = async (req, res) => {
     try {
         const accountData = await Account.create({
             account_name: req.body.account_name,
@@ -55,7 +55,7 @@ const createAccount = async (req, res) => {
 }
 
 
-const deleteAccount = async (req, res) => {
+exports.deleteAccount = async (req, res) => {
     try {
         const accountData = await Account.destroy({
             where: {
