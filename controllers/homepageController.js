@@ -7,15 +7,7 @@ const { Character, Account } = require('../models');
 // })
 
 //get all
-// router.get('/', async (req, res) => {
-//     try {
-//         const characterData = await Character.findAll();
-//         const characters = characterData.map((character) => character.get())
-//         res.render('all', { characters })
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// })
+
 router.get('/', async (req, res) => {
     try {
         const characterData = await Character.findAll({
@@ -41,7 +33,7 @@ router.get('/', async (req, res) => {
 })
 
 
-
+//get one by id 
 
 router.get('/character/:id', async (req, res) => {
     try {

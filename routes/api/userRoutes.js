@@ -1,23 +1,23 @@
 const router = require("express").Router();
-// const userController = require('../../controllers/userController')
-const {
-  getAllUsers,
-  getUser,
-  renderUsers,
-  createUser,
-  updateUser,
-  deleteUser,
-} = require("../../controllers/userController");
+const userController = require("../../controllers/userController");
+// const {
+//   getAllUsers,
+//   getUser,
+//   createUser,
+//   updateUser,
+//   deleteUser,
+// } = require("../../controllers/userController");
 
 router
-.get("/", getAllUsers)
-.post("/", createUser)
-
+ 
+  .get("/", userController.getAllUsers)
+  .post("/", userController.createUser);
 
 router
-.get("/:id", getUser)
-.put("/:id", updateUser)
-.delete("/:id", deleteUser);
+
+  .get("/:id", userController.getUser)
+  .put("/:id", userController.updateUser)
+  .delete("/:id", userController.deleteUser);
 
 // const getAllUsers = async (req, res) => {
 //     try {

@@ -1,4 +1,4 @@
-const { Character, Account, User } = require("../models");
+const { Character, Account } = require("../models");
 
 exports.getAllCharacters = async (req, res) => {
   try {
@@ -22,6 +22,34 @@ exports.getAllCharacters = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+// exports.getAllCharacters =  async (req, res) => {
+//   try {
+//       const characterData = await Character.findAll({
+//           attributes: [  "id",
+//           "character_name",
+//           "character_class",
+//           "character_level",
+//           "user_id",
+//           "account_id",],
+//           include: [
+//               {
+//                   model: Account,
+//                   attributes: ["account_name"],
+//               },
+//           ],
+//       });
+//       const characters = characterData.map((character) => character.get({ plain: true }));
+//       res.render('all', { characters })
+
+//   } catch (err) {
+//       res.status(500).json(err);
+//   }
+// }
+
+
+
+
 
 exports.getCharacter = async (req, res) => {
   try {

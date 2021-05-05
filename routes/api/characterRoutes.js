@@ -6,7 +6,8 @@ const {
   deleteCharacter,
 } = require("../../controllers/characterController");
 
-router.get("/", getAllCharacters).post("/", createCharacter);
+router
+.get("/", getAllCharacters).post("/", createCharacter);
 
 router.get("/:id", getCharacter).delete("/:id", deleteCharacter);
 
