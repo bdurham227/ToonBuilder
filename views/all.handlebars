@@ -1,0 +1,27 @@
+<div class="menu-container">
+  <div class="card-header col-md-10">
+    <h2>
+        &#127869 Character Menu
+    </h2>
+  </div>
+  {{#each characters as |characters|}}
+  {{#each account as |account|}}
+    <div class="dish col-md-5">
+      <p>
+       
+        Name: {{characters.character_name}}
+        <br>
+            Class: {{characters.character_class}}
+        <br>
+        Level:  {{characters.character_level}}
+        <br>
+        Account: {{account}}
+        
+      </p>
+    </div>
+ 
+    {{/each}}
+   {{/each}}
+
+
+</div>

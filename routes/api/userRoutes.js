@@ -3,14 +3,21 @@ const router = require("express").Router();
 const {
   getAllUsers,
   getUser,
+  renderUsers,
   createUser,
   updateUser,
   deleteUser,
 } = require("../../controllers/userController");
 
-router.get("/", getAllUsers).post("/", createUser);
+router
+.get("/", getAllUsers)
+.post("/", createUser)
 
-router.get("/:id", getUser).put("/:id", updateUser).delete("/:id", deleteUser);
+
+router
+.get("/:id", getUser)
+.put("/:id", updateUser)
+.delete("/:id", deleteUser);
 
 // const getAllUsers = async (req, res) => {
 //     try {
